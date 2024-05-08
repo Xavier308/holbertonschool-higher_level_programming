@@ -1,11 +1,13 @@
 #!/usr/bin/python3
+
 def uppercase(s):
     """
     Print a string in uppercase followed by a new line.
-
+    
     Args:
         s: A string.
     """
+    result = ""  # Initialize an empty string to store the uppercase string
     for char in s:
         # Check if the character is lowercase
         if ord('a') <= ord(char) <= ord('z'):
@@ -13,7 +15,10 @@ def uppercase(s):
             uppercase_char = chr(ord(char) - 32)
         else:
             uppercase_char = char
-        # Print the uppercase character without a newline
-        print(uppercase_char, end="")
-    # Print a newline after printing the uppercase string
-    print()
+        # Append the uppercase character to the result string
+        result += uppercase_char
+    # Print the uppercase string followed by a newline
+    print(result)
+
+# Test the function
+uppercase("Hello, World!")
