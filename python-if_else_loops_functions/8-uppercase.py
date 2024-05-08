@@ -19,6 +19,3 @@ def uppercase(s):
         result += uppercase_char
     # Print the uppercase string followed by a newline
     print(result)
-
-# Test the function
-uppercase("Hello, World!")
