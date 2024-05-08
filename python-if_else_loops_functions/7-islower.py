@@ -9,5 +9,5 @@ def islower(c):
     Returns:
         True if c is lowercase, False otherwise.
     """
-    # Check the ASCII value of c 
+    # Check the ASCII value of c
     return ord('a') <= ord(c) <= ord('z')
