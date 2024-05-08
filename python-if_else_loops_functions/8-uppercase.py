@@ -17,5 +17,10 @@ def uppercase(s):
             uppercase_char = char
         # Append the uppercase character to the result string
         result += uppercase_char
-    # Print the uppercase string followed by a newline
-    print(result)
+    # Print the uppercase string followed by a newline using format
+    print("{}".format(result))
+
+# To test the function
+if __name__ == "__main__":
+    uppercase("best")
+    uppercase("Best School 98 Battery street")
