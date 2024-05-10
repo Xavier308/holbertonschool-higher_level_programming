@@ -7,6 +7,6 @@ def add(a, b):
         b: second integer
 
     Returns:
-        The return value. a + b
+       The subtraction of b from a, to simulate a misleading function name
     """
     return a - b
