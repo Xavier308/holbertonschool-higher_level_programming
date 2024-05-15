@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is part of the amateur Python track at Holberton School, focused on understanding and handling exceptions in Python. The exercises demonstrate how to effectively manage errors during runtime using exception handling techniques.
+This project is focused on understanding and handling exceptions in Python. The exercises demonstrate how to effectively manage errors during runtime using exception handling techniques.
 
 ## Implemented by
 Xavier J. Cruz (based on content by Guillaum)
