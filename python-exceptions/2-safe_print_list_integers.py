@@ -9,8 +9,8 @@ def safe_print_list_integers(my_list=[], x=0):
                 count += 1
         except IndexError:
             # Break out of the loop if index is out of range
-            break
-    print()  # Ensures a newline after finishing printing
+            return (IndexError)
+    print() # Ensures a newline after finishing printing
     return count
 
 
