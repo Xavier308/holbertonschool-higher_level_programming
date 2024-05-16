@@ -8,7 +8,14 @@ dimensions of the square.
 
 
 class Square:
-
+    """
+    Defines a square by its 'size' which is a private instance attribute.
+    """
     def __init__(self, size):
+        """
+        Initialize a new Square.
 
+        Args:
+            size (int): The size of the square.
+        """
         self.__size = size
