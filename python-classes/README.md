@@ -10,7 +10,7 @@ Understanding Object-Oriented Programming (OOP) is essential for effective Pytho
 
 ### Resources
 
-- [Object Oriented Programming](https://python.swaroopch.com/oop.html) (Read everything until the paragraph "Inheritance" excluded.)
+- [Object Oriented Programming](https://python.swaroopch.com/oop.html)
 - [Properties vs. Getters and Setters](https://www.python-course.eu/python3_properties.php)
 - [Learn to Program 9: Object Oriented Programming](https://www.youtube.com/watch?v=1AGyBuVCTeE&)
 - Additional OOP resources in Python [Python Classes and Objects](https://docs.python.org/3/tutorial/classes.html), [Object Oriented Programming](https://realpython.com/python3-object-oriented-programming/)
@@ -71,6 +71,4 @@ A method `my_print` that prints the square using the `#` character.
 ### 6. Coordinates of a square
 
 Extends the `Square` class to include a `position` attribute with getter and setter.
-
-
 
