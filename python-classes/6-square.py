@@ -12,7 +12,8 @@ properties.
 class Square:
     """
     Defines a square by its 'size' and 'position', ensuring proper validation
-    for each and methods to calculate its area and print itself based on position.
+    for each and methods to calculate its area and print itself based
+    on position.
     """
     def __init__(self, size=0, position=(0, 0)):
 
@@ -23,7 +24,8 @@ class Square:
 
         Args:
             size (int, optional): The size of the square. Defaults to 0.
-            position (tuple, optional): The x and y coordinates of the square's position. Defaults to (0, 0).
+            position (tuple, optional): The x and y coordinates of the
+            square's position.
         """
     @property
     def size(self):

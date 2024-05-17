@@ -10,8 +10,9 @@ the square using the character '#'.
 
 class Square:
     """
-    Defines a square by its 'size', ensuring it's an integer and non-negative,
-    with methods to calculate its area, access, modify its size, and print itself.
+    Defines a square by its 'size', ensuring it's an integer and
+    non-negative, with methods to calculate its area, access,
+    modify its size, and print itself.
     """
     def __init__(self, size=0):
         """
@@ -39,7 +40,7 @@ class Square:
 
         Args:
             value (int): The new size of the square.
-        
+
         Raises:
             TypeError: If 'value' is not an integer.
             ValueError: If 'value' is less than 0.
