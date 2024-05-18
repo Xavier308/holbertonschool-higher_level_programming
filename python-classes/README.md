@@ -72,3 +72,7 @@ A method `my_print` that prints the square using the `#` character.
 
 Extends the `Square` class to include a `position` attribute with getter and setter.
 
+
+
+
+
