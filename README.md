@@ -4,6 +4,9 @@ Welcome to the **Holberton School Higher Level Programming** repository! This re
 
 ## Directories
 
+### python-hello_world
+The foundational Python concepts start here, with introductory exercises and updates to ensure a solid base in Python programming, especially for beginners.
+
 ### python-classes
 Explore Python's object-oriented programming capabilities through exercises and projects focusing on classes and objects. This directory provides practical examples and is regularly updated with new content.
 
@@ -12,9 +15,6 @@ This directory hosts exercises covering essential Python data structures such as
 
 ### python-exceptions
 Dive into error and exception handling with Python through the exercises in this directory. It includes practical examples and is frequently updated to enhance your understanding of handling errors and exceptions in Python programs.
-
-### python-hello_world
-The foundational Python concepts start here, with introductory exercises and updates to ensure a solid base in Python programming, especially for beginners.
 
 ### python-if_else_loops_functions
 Focused on control structures in Python, this directory contains exercises on if/else conditions, loops, and functions. It's regularly updated to provide a thorough understanding of Python syntax and flow control.
