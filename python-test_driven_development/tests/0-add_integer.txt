@@ -1,5 +1,5 @@
 # Basic tests with integers
->>> add_integer(10, 2)
+>>> 0-add_integer(10, 2)
 12
 >>> add_integer(1, -1)
 0
