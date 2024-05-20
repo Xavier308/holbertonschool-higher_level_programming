@@ -1,5 +1,5 @@
 """
->>> from add_integer import add_integer
+>>> from 0-add_integer.py import add_integer
 
 # Basic tests with integers
 >>> add_integer(10, 2)
