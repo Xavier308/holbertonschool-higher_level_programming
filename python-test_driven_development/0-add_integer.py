@@ -31,3 +31,7 @@ def add_integer(a, b=98):
     b = int(b)
     # Return the sum of the two integers
     return a + b
+
+
+if __name__ == "__main__":
+    main()

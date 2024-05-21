@@ -1,0 +1,22 @@
+>>> from 5-text_indentation import text_indentation
+>>> text_indentation("Hello world. How are you?")
+Hello world.$
+$
+How are you?$
+$
+>>> text_indentation("What's going on? Are you sure: really sure?")
+What's going on?$
+$
+Are you sure:$
+$
+really sure?$
+$
+>>> text_indentation("No errors here.")
+No errors here.$
+$
+>>> text_indentation("")
+$
+>>> text_indentation("Incorrect input")
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
