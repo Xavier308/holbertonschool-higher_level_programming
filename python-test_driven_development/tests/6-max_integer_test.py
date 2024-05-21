@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""
-Unittest for max_integer([..])
+"""Unittest for max_integer([..])
 """
 
 import unittest
-from max_integer import max_integer
+from 6-max_integer import max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
