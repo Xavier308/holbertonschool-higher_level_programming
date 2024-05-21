@@ -4,23 +4,24 @@
 >>> output = io.StringIO()
 >>> sys.stdout = output
 >>> say_my_name("John", "Smith")
->>> output.getvalue()
-'My name is John Smith\n'
->>> output.truncate(0); output.seek(0)
-0
+>>> result = output.getvalue()  # Capture the result before clearing
+>>> print(result == 'My name is John Smith\n')  # Validate
+True
+>>> output.truncate(0); output.seek(0)  # Clear the buffer for next test
 >>> say_my_name("Walter", "White")
->>> output.getvalue()
-'My name is Walter White\n'
+>>> result = output.getvalue()
+>>> print(result == 'My name is Walter White\n')
+True
 >>> output.truncate(0); output.seek(0)
-0
 >>> say_my_name("Bob")
->>> output.getvalue()
-'My name is Bob\n'
->>> say_my_name(12, "White")
+>>> result = output.getvalue()
+>>> print(result == 'My name is Bob\n')
+True
+>>> say_my_name(12, "White")  # This should raise an error
 Traceback (most recent call last):
     ...
 TypeError: first_name must be a string
->>> say_my_name("Walter", 123)
+>>> say_my_name("Walter", 123)  # This should also raise an error
 Traceback (most recent call last):
     ...
 TypeError: last_name must be a string

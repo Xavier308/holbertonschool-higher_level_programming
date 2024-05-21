@@ -11,7 +11,8 @@ def say_my_name(first_name, last_name=""):
 
     Args:
         first_name (str): The first name of the person.
-        last_name (str): The last name of the person; defaults to an empty string.
+        last_name (str): The last name of the person;
+        defaults to an empty string.
 
     Raises:
         TypeError: If either first_name or last_name is not a string.
@@ -25,7 +26,3 @@ def say_my_name(first_name, last_name=""):
         raise TypeError("last_name must be a string")
 
     print(f"My name is {first_name} {last_name}".strip())
-
-
-if __name__ == "__main__":
-    main()
