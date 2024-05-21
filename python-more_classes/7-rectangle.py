@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+Defines the Rectangle class with properties to control dimensions,
+count active instances, and customize visual representation with
+a print symbol.
+Includes methods for calculating area and perimeter, with a
+destructor for managing deletions.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle by its width and height,

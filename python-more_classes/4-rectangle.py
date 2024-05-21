@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+Defines a Rectangle class with methods for area, perimeter, and for returning
+string representations, both for informal displays and official string
+representations that can recreate the instance.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle by its width and height,

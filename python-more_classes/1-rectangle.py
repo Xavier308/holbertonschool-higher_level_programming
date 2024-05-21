@@ -1,4 +1,16 @@
 #!/usr/bin/python3
+"""
+This module defines a Rectangle class that models a rectangle with
+configurable width and height.
+It includes properties to manage the dimensions safely, enforcing
+correct data types and value constraints.
+
+Classes:
+    Rectangle: Defines a rectangle with methods to set and retrieve
+    width and height, ensuring data integrity.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle by its width and height

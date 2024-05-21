@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+Module defining a Rectangle class with methods to compute area and perimeter.
+
+Classes:
+    Rectangle: Manages dimensions of a rectangle and calculates geometry.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle by its width and height,

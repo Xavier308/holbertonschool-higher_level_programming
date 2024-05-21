@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+Defines a Rectangle class with methods for computing area, perimeter,
+and handling string representations.
+Additionally, it includes a destructor to notify when an
+instance is deleted.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle by its width and height,

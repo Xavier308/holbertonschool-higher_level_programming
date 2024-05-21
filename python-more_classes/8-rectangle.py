@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+Defines the Rectangle class that allows dimensional control, area calculation,
+and comparison based on area.
+Supports visual and official representations, and tracks instance counts with
+custom deletion messaging.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle and allows comparison

@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+Defines a Rectangle class that handles rectangle properties, calculates area
+and perimeter, compares instances based on area, and can instantiate squares.
+It manages instance lifecycle and custom visual representation.
+"""
+
+
 class Rectangle:
     """
     A class Rectangle that defines a rectangle and can also be used to
