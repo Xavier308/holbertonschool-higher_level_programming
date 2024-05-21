@@ -29,22 +29,3 @@ def print_square(size):
 
     for _ in range(size):
         print("#" * size)
-
-
-# Below lines are just for an example and should not be included in the
-# module file if it's used for importing purposes.
-# These should be used in a separate test file or main section.
-if __name__ == "__main__":
-    print_square(4)
-    print("")
-    print_square(10)
-    print("")
-    print_square(0)
-    print("")
-    print_square(1)
-    print("")
-    try:
-        print_square(-1)
-    except Exception as e:
-        print(e)
-    print("")
