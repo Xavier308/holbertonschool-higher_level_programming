@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 """This module provides the function add_integer, which adds two integers.
-    The function handles both integers and floats by converting floats to
-    integers before performing the addition.
+    The function handles both integers and floats
+    by converting floats to integers before
+    performing the addition.
 """
 
 

@@ -1,22 +1,23 @@
->>> from 5-text_indentation import text_indentation
+>>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("Hello world. How are you?")
-Hello world.$
-$
-How are you?$
-$
+Hello world.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
 >>> text_indentation("What's going on? Are you sure: really sure?")
-What's going on?$
-$
-Are you sure:$
-$
-really sure?$
-$
+What's going on?
+<BLANKLINE>
+Are you sure:
+<BLANKLINE>
+really sure?
+<BLANKLINE>
 >>> text_indentation("No errors here.")
-No errors here.$
-$
+No errors here.
+<BLANKLINE>
 >>> text_indentation("")
-$
->>> text_indentation("Incorrect input")
+<BLANKLINE>
+>>> text_indentation(123)
 Traceback (most recent call last):
     ...
 TypeError: text must be a string
+

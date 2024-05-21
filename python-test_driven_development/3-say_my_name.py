@@ -1,31 +1,31 @@
 #!/usr/bin/python3
 """
-This module provides a function called print_square that prints a square of
-a given size using the '#' character. It is designed to demonstrate the
-handling of basic validation for input types and values
-in a straightforward manner.
+This module provides the function say_my_name which prints a person's name.
+It handles basic input validation in a straightforward manner.
 """
 
 
-def print_square(size):
+def say_my_name(first_name, last_name=""):
     """
-    Prints a square with the character # based on the given size.
+    Prints a full name in the format 'My name is <first name> <last name>'.
 
     Args:
-        size (int): The length of the sides of the square.
+        first_name (str): The first name of the person.
+        last_name (str): The last name of the person; defaults to an empty string.
 
     Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is less than 0.
+        TypeError: If either first_name or last_name is not a string.
 
     Returns:
         None: This function prints directly to standard output.
     """
+    if not isinstance(first_name, str):
+        raise TypeError("first_name must be a string")
+    if not isinstance(last_name, str):
+        raise TypeError("last_name must be a string")
 
-    if not isinstance(size, int):
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
+    print(f"My name is {first_name} {last_name}".strip())
 
-    for _ in range(size):
-        print("#" * size)
+
+if __name__ == "__main__":
+    main()
