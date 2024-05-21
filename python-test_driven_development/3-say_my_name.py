@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-"""
-This module provides the function say_my_name which prints a person's name.
-It handles basic input validation in a straightforward manner.
+"""This module provides the function say_my_name which prints a person's name.
+   It handles basic input validation in a straightforward manner.
 """
 
 
 def say_my_name(first_name, last_name=""):
-    """
-    Prints a full name in the format 'My name is <first name> <last name>'.
+    """Prints a full name in the format 'My name is <first name> <last name>'.
 
     Args:
         first_name (str): The first name of the person.

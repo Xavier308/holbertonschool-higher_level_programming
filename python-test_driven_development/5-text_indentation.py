@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""
-This module provides a function called text_indentation that formats text
-by inserting two new lines after each '.', '?', and ':'. This helps in
-text parsing and presentation, ensuring that each sentence
-is clearly separated.
+"""This module provides a function called text_indentation that formats text
+   by inserting two new lines after each '.', '?', and ':'. This helps in
+   text parsing and presentation, ensuring that each sentence
+   is clearly separated.
 """
 
 
 def text_indentation(text):
-    """
-    Prints text with two new lines after each '.', '?', and ':'.
+    """Prints text with two new lines after each '.', '?', and ':'.
 
     Args:
         text (str): The text to print with indentation.

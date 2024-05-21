@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""
-This module provides a function called print_square that prints a square of
-a given size using the '#' character. It is designed to demonstrate the
-handling of basic validation for input types and values
-in a straightforward manner.
+"""This module provides a function called print_square that prints a square of
+   a given size using the '#' character. It is designed to demonstrate the
+   handling of basic validation for input types and values
+   in a straightforward manner.
 """
 
 
 def print_square(size):
-    """
-    Prints a square with the character # based on the given size.
+    """Prints a square with the character # based on the given size.
 
     Args:
         size (int): The length of the sides of the square.
