@@ -1,0 +1,20 @@
+"""
+Test cases for the BaseGeometry class with integer validation.
+
+Test: Valid integer
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+
+Test: Invalid type
+>>> bg.integer_validator("name", "John")
+[TypeError] name must be an integer
+
+Test: Zero value
+>>> bg.integer_validator("age", 0)
+[ValueError] age must be greater than 0
+
+Test: Negative value
+>>> bg.integer_validator("distance", -4)
+[ValueError] distance must be greater than 0
+"""
