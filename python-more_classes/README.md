@@ -3,7 +3,7 @@
 This repository contains the exercises for the "Python - More Classes and Objects" project at Holberton School. This project focuses on deepening understanding of object-oriented programming (OOP) in Python, covering attributes, methods, special methods (`__str__`, `__repr__`), and more.
 
 ## Implemented by
-Xavier J. Cruz (based on content by Guillaum)
+Xavier J. Cruz (based on content by Guillaume)
 
 ### Resources
 - [Object Oriented Programming](https://python.swaroopch.com/oop.html)
