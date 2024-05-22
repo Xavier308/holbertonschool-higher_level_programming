@@ -1,7 +1,7 @@
 # Python - Classes and Objects
 
 ## Implemented by
-Xavier J. Cruz (based on content by Guillaum)
+Xavier J. Cruz (based on content by Guillaume)
 
 
 ## Background Context
