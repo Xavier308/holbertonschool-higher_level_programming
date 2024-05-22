@@ -1,5 +1,6 @@
-"""
 Test cases for the MyList class which inherits from list and has a method to print sorted list.
+
+>>> MyList = __import__('1-my_list').MyList
 
 Test: Empty list
 >>> my_list = MyList()
@@ -29,4 +30,3 @@ Test: Negative integers
 >>> my_list = MyList([-3, -1, -2])
 >>> my_list.print_sorted()
 [-3, -2, -1]
-"""
