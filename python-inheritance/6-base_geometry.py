@@ -3,6 +3,7 @@
 Enhances BaseGeometry class with an unimplemented area method.
 """
 
+
 class BaseGeometry:
     """
     BaseGeometry class with a method area that raises an exception.
@@ -17,6 +18,7 @@ class BaseGeometry:
             Exception: "area() is not implemented"
         """
         raise Exception("area() is not implemented")
+
 
 if __name__ == "__main__":
     bg = BaseGeometry()

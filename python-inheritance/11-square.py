@@ -43,6 +43,7 @@ class Square(Rectangle):
         """
         return self.__size ** 2
 
+
 if __name__ == "__main__":
     s = Square(13)
     print(s)

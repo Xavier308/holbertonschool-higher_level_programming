@@ -30,7 +30,11 @@ class Square(Rectangle):
         Returns:
             str: The string description of the square.
         """
-        return f"[Rectangle] {self._Rectangle__width}/{self._Rectangle__height}"
+        width = self._Rectangle__width
+        height = self._Rectangle__height
+        description = f"[Rectangle] {width}/{height}"
+        return description
+
 
 if __name__ == "__main__":
     s = Square(13)

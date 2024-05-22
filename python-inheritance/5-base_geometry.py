@@ -10,6 +10,7 @@ class BaseGeometry:
     """
     pass
 
+
 if __name__ == "__main__":
     bg = BaseGeometry()
 

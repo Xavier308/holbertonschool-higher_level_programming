@@ -30,6 +30,7 @@ class Rectangle(BaseGeometry):
         self.__width = width
         self.__height = height
 
+
 if __name__ == "__main__":
     r = Rectangle(3, 5)
     print(r)
