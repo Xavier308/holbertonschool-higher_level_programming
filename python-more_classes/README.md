@@ -60,6 +60,8 @@ Xavier J. Cruz (based on content by Guillaume)
 #### 8. Compare rectangles
 - Add a static method to the Rectangle class to compare the area of two rectangles and return the bigger or the first if they are equal.
 
+  
+
 #### 9. A Square is a Rectangle
 - Implement a class method in the Rectangle class that allows creating a square (a rectangle with equal width and height).
 
