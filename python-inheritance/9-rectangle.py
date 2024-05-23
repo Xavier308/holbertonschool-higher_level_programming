@@ -47,9 +47,3 @@ class Rectangle(BaseGeometry):
             str: The string description of the rectangle.
         """
         return f"[Rectangle] {self.__width}/{self.__height}"
-
-
-if __name__ == "__main__":
-    r = Rectangle(3, 5)
-    print(r)
-    print(r.area())
