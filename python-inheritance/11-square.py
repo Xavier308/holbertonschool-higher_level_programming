@@ -42,9 +42,3 @@ class Square(Rectangle):
             int: The area of the square.
         """
         return self.__size ** 2
-
-
-if __name__ == "__main__":
-    s = Square(13)
-    print(s)
-    print(s.area())
