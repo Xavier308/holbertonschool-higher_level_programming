@@ -35,8 +35,3 @@ class Square(Rectangle):
         description = f"[Rectangle] {width}/{height}"
         return description
 
-
-if __name__ == "__main__":
-    s = Square(13)
-    print(s)
-    print(s.area())
