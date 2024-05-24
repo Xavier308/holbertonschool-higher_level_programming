@@ -34,6 +34,9 @@ class Circle(Shape):
     """
     Represents a circle, implementing the area and perimeter calculations.
     Ensures that the radius provided is non-negative.
+    Raises:
+        ValueError: If a negative radius is attempted to be set, indicating
+        improper use of the class.
     """
     def __init__(self, radius):
         if radius < 0:
