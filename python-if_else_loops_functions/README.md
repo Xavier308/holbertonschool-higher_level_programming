@@ -18,3 +18,5 @@
 - Scope of variables
 - What’s a traceback
 - What are the arithmetic operators and how to use them
+
+
