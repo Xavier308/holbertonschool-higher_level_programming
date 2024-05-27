@@ -22,3 +22,23 @@ def load_from_json_file(filename):
             return json.load(f)
     except FileNotFoundError:
         return []
+
+
+def main():
+    """
+    Main function that processes command line arguments and updates
+    the JSON file.
+    """
+    filename = 'add_item.json'
+    # Load existing items or get an empty list
+    list_items = load_from_json_file(filename)
+
+    # Add command line arguments to the list
+    list_items.extend(sys.argv[1:])
+
+    # Save the updated list back to the file
+    save_to_json_file(list_items, filename)
+
+
+if __name__ == "__main__":
+    main()
