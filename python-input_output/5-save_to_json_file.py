@@ -19,8 +19,7 @@ def save_to_json_file(my_obj, filename):
     try:
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(my_obj, f)
-    except PermissionError:
-        # Ignore silently permission errors
-        pass
     except TypeError as e:
         print(f"[TypeError] {e}")
+    except PermissionError:
+        pass
