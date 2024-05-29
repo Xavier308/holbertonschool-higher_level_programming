@@ -2,6 +2,10 @@
 import pickle
 import json
 
+"""This module serializes Python data to JSON and pickles custom objects
+   for saving and reloading them from files.
+"""
+
 
 def serialize_and_save_to_file(data, filename):
     with open(filename, 'w') as file:

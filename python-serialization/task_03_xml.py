@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 import xml.etree.ElementTree as ET
 
+"""
+This module provides functions to serialize a Python dictionary into XML
+format and save it to a file, and to deserialize XML back into a
+dictionary, utilizing Python's xml.etree.ElementTree.
+"""
+
 
 def serialize_to_xml(dictionary, filename):
     """

@@ -2,6 +2,11 @@
 import csv
 import json
 
+""" This module contains a function that converts data from a CSV file to
+    JSON format, handling serialization and file operations,
+    and providing error feedback.
+"""
+
 
 def convert_csv_to_json(csv_filename):
     """

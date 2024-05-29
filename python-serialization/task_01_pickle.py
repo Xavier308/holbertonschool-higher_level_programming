@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 import pickle
 
+"""
+This module defines a CustomObject class capable of serializing its instances
+to files using pickle and displaying its attributes.
+"""
+
 
 class CustomObject:
     def __init__(self, name, age, is_student):
