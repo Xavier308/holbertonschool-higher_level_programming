@@ -1,29 +1,30 @@
+# task_04_flask.py
 from flask import Flask, jsonify, request
-
 
 app = Flask(__name__)
 
-# In-memory storage for user data
+# In-memory user storage
 users = {
     "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
     "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
 }
 
+# Root endpoint
 @app.route('/')
 def home():
     return "Welcome to the Flask API!"
 
-@app.route('/data')
-def data():
-    if users:
-        return jsonify(list(users.keys()))
-    else:
-        return jsonify([])
-
+# /status endpoint
 @app.route('/status')
 def status():
     return "OK"
 
+# /data endpoint to get all usernames
+@app.route('/data')
+def get_usernames():
+    return jsonify(list(users.keys()))
+
+# /users/<username> endpoint to get user details
 @app.route('/users/<username>')
 def get_user(username):
     user = users.get(username)
@@ -32,21 +33,21 @@ def get_user(username):
     else:
         return jsonify({"error": "User not found"}), 404
 
+# /add_user endpoint to add a new user
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    user_data = request.get_json()
-    if not user_data:
-        return jsonify({"error": "No data provided"}), 400
+    data = request.get_json()
+    username = data.get('username')
+    if not username or username in users:
+        return jsonify({"error": "Invalid or existing username"}), 400
 
-    username = user_data.get('username')
-    if not username:
-        return jsonify({"error": "Username is required"}), 400
-
-    if username in users:
-        return jsonify({"error": "User already exists"}), 400
-
-    users[username] = user_data
-    return jsonify({"message": "User added", "user": user_data}), 201
+    users[username] = {
+        "username": username,
+        "name": data.get('name'),
+        "age": data.get('age'),
+        "city": data.get('city')
+    }
+    return jsonify({"message": "User added", "user": users[username]})
 
 
 if __name__ == "__main__":
