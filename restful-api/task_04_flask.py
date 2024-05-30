@@ -1,8 +1,8 @@
-#!/usr/bin/python3
-
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+
+# app.config['DEBUG'] = True
 
 # In-memory user storage
 users = {
@@ -69,4 +69,4 @@ def add_user():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
