@@ -1,4 +1,3 @@
-# task_04_flask.py
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -14,12 +13,10 @@ users = {
 def home():
     return "Welcome to the Flask API!"
 
-# /status endpoint
 @app.route('/status')
 def status():
     return "OK"
 
-# /data endpoint to get all usernames
 @app.route('/data')
 def get_usernames():
     return jsonify(list(users.keys()))
