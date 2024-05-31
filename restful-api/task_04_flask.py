@@ -4,20 +4,36 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 
-# Initialize with an empty users dictionary.
-users = {}
+# Ordered dict.
+users = {
+    "jane": OrderedDict([
+        ('username', 'jane'), 
+        ('name', 'Jane'), 
+        ('age', 28), 
+        ('city', 'Los Angeles')
+    ]),
+    "john": OrderedDict([
+        ('username', 'john'), 
+        ('name', 'John'), 
+        ('age', 30), 
+        ('city', 'New York')
+    ])
+}
 
 @app.route('/')
 def home():
     return "Welcome to the Flask API!"
 
+
 @app.route('/data')
 def data():
     return jsonify(list(users.keys()))
 
+
 @app.route('/status')
 def status():
     return "OK"
+
 
 @app.route('/users/<username>')
 def get_user(username):
@@ -27,6 +43,7 @@ def get_user(username):
         return Response(response, mimetype='application/json')
     else:
         return jsonify({"message": "User not found"}), 404
+
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
