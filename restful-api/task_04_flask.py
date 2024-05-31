@@ -1,71 +1,70 @@
 from flask import Flask, jsonify, request
+import json
+from collections import OrderedDict
 
 app = Flask(__name__)
-
+# Force depuration
 # app.config['DEBUG'] = True
 
-# In-memory user storage
+# Initialize the users dictionary with OrderedDict to maintain the order.
 users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane", "age": 28,
-        "city": "Los Angeles"},
-    "john": {
-        "username": "john",
-        "name": "John", "age": 30,
-        "city": "New York"}
+    "jane": OrderedDict([
+        ('username', 'jane'), 
+        ('name', 'Jane'), 
+        ('age', 28), 
+        ('city', 'Los Angeles')
+    ]),
+    "john": OrderedDict([
+        ('username', 'john'), 
+        ('name', 'John'), 
+        ('age', 30), 
+        ('city', 'New York')
+    ])
 }
 
 
-# Root endpoint
 @app.route('/')
 def home():
     return "Welcome to the Flask API!"
 
 
-# /status endpoint
+@app.route('/data')
+def data():
+    return jsonify(list(users.keys()))
+
+
 @app.route('/status')
 def status():
     return "OK"
 
 
-# /data endpoint to get all usernames
-@app.route('/data')
-def get_usernames():
-    return jsonify(list(users.keys()))
-
-
-# /users/<username> endpoint to get user details
 @app.route('/users/<username>')
 def get_user(username):
     user = users.get(username)
     if user:
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found"}), 404
+        return jsonify({"message": "User not found"}), 404
 
 
-# /add_user endpoint to add a new user
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    data = request.get_json()
-
-    if not data or 'username' not in data:
-        return jsonify({"error": "Username is required"}), 400
-
-    username = data['username']
-
+    user_data = request.get_json()
+    username = user_data.get('username')
     if username in users:
-        return jsonify({"error": "Username already exists"}), 400
+        return jsonify({"message": "User already exists"}), 409
 
-    users[username] = {
-        "username": username,
-        "name": data.get('name'),
-        "age": data.get('age'),
-        "city": data.get('city')
-    }
+    # Using OrderedDict to ensure the data is serialized in the precise order.
+    ordered_user_data = OrderedDict([
+        ('username', user_data.get('username')),
+        ('name', user_data.get('name')),
+        ('age', user_data.get('age')),
+        ('city', user_data.get('city'))
+    ])
 
-    return jsonify({"message": "User added", "user": users[username]}), 201
+    users[username] = ordered_user_data
+    response = json.dumps({"message": "User added", "user": ordered_user_data}, ensure_ascii=False)
+    return Response(response, mimetype='application/json')
 
 
 if __name__ == "__main__":
