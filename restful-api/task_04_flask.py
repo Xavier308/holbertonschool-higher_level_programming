@@ -13,10 +13,7 @@ def home():
 
 @app.route('/data')
 def data():
-    if users:
-        return jsonify(list(users.keys()))
-    else:
-        return jsonify([])  # Ensure returning an empty list when no users are added.
+    return jsonify(list(users.keys()))
 
 @app.route('/status')
 def status():
@@ -34,18 +31,21 @@ def get_user(username):
 @app.route('/add_user', methods=['POST'])
 def add_user():
     user_data = request.get_json()
-    if not user_data or 'username' not in user_data:
-        return jsonify({"message": "Missing username"}), 400
+    if not user_data or 'username' not in user_data or not user_data['username']:
+        return jsonify({"message": "Missing or empty username"}), 400
 
-    username = user_data.get('username')
+    if any(field not in user_data or not user_data[field] for field in ['name', 'age', 'city']):
+        return jsonify({"message": "Missing required field"}), 400
+
+    username = user_data['username']
     if username in users:
         return jsonify({"message": "User already exists"}), 409
 
     ordered_user_data = OrderedDict([
         ('username', username),
-        ('name', user_data.get('name')),
-        ('age', user_data.get('age')),
-        ('city', user_data.get('city'))
+        ('name', user_data['name']),
+        ('age', user_data['age']),
+        ('city', user_data['city'])
     ])
 
     users[username] = ordered_user_data
