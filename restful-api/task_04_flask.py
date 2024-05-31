@@ -4,21 +4,8 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 
-# users dictionary with OrderedDict
-users = {
-    "jane": OrderedDict([
-        ('username', 'jane'), 
-        ('name', 'Jane'), 
-        ('age', 28), 
-        ('city', 'Los Angeles')
-    ]),
-    "john": OrderedDict([
-        ('username', 'john'), 
-        ('name', 'John'), 
-        ('age', 30), 
-        ('city', 'New York')
-    ])
-}
+# Initialize with an empty users dictionary.
+users = {}
 
 @app.route('/')
 def home():
@@ -26,7 +13,10 @@ def home():
 
 @app.route('/data')
 def data():
-    return jsonify(list(users.keys()))
+    if users:
+        return jsonify(list(users.keys()))
+    else:
+        return jsonify([])  # Ensure returning an empty list when no users are added.
 
 @app.route('/status')
 def status():
@@ -36,7 +26,6 @@ def status():
 def get_user(username):
     user = users.get(username)
     if user:
-        # Use json.dumps to control serialization directly
         response = json.dumps(user, ensure_ascii=False)
         return Response(response, mimetype='application/json')
     else:
@@ -45,13 +34,15 @@ def get_user(username):
 @app.route('/add_user', methods=['POST'])
 def add_user():
     user_data = request.get_json()
+    if not user_data or 'username' not in user_data:
+        return jsonify({"message": "Missing username"}), 400
+
     username = user_data.get('username')
     if username in users:
         return jsonify({"message": "User already exists"}), 409
 
-    # Using OrderedDict to ensure the data is serialized in the precise order.
     ordered_user_data = OrderedDict([
-        ('username', user_data.get('username')),
+        ('username', username),
         ('name', user_data.get('name')),
         ('age', user_data.get('age')),
         ('city', user_data.get('city'))
@@ -60,6 +51,7 @@ def add_user():
     users[username] = ordered_user_data
     response = json.dumps({"message": "User added", "user": ordered_user_data}, ensure_ascii=False)
     return Response(response, mimetype='application/json')
+
 
 if __name__ == "__main__":
     app.run(debug=False)
