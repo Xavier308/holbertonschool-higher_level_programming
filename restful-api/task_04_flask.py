@@ -1,12 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 import json
 from collections import OrderedDict
 
 app = Flask(__name__)
-# Force depuration
-# app.config['DEBUG'] = True
 
-# Initialize the users dictionary with OrderedDict to maintain the order.
+# users dictionary with OrderedDict
 users = {
     "jane": OrderedDict([
         ('username', 'jane'), 
@@ -22,30 +20,27 @@ users = {
     ])
 }
 
-
 @app.route('/')
 def home():
     return "Welcome to the Flask API!"
-
 
 @app.route('/data')
 def data():
     return jsonify(list(users.keys()))
 
-
 @app.route('/status')
 def status():
     return "OK"
-
 
 @app.route('/users/<username>')
 def get_user(username):
     user = users.get(username)
     if user:
-        return jsonify(user)
+        # Use json.dumps to control serialization directly
+        response = json.dumps(user, ensure_ascii=False)
+        return Response(response, mimetype='application/json')
     else:
         return jsonify({"message": "User not found"}), 404
-
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -65,7 +60,6 @@ def add_user():
     users[username] = ordered_user_data
     response = json.dumps({"message": "User added", "user": ordered_user_data}, ensure_ascii=False)
     return Response(response, mimetype='application/json')
-
 
 if __name__ == "__main__":
     app.run(debug=False)
