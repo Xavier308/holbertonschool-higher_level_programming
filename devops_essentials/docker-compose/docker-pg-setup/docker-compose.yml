@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: postgresdb
+      POSTGRES_USER: adminXavier
+      POSTGRES_PASSWORD: adminpass9038
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  admin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 9038@holbertonstudents.com
+      PGADMIN_DEFAULT_PASSWORD: adminpass9038
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
