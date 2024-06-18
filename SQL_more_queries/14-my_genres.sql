@@ -1,10 +1,10 @@
 -- My genres
 -- Script that uses the hbtn_0d_tvshows database to lists all genres of the show Dexter.
 
+SELECT g.name
+FROM tv_genres g
+JOIN tv_show_genres sg ON g.id = sg.genre_id
+JOIN tv_shows s ON sg.show_id = s.id
+WHERE s.title = 'Dexter'
 -- Sorted by genre name
-SELECT genres.name
-FROM genres
-JOIN tv_show_genres ON genres.id = tv_show_genres.genre_id
-JOIN tv_shows ON tv_shows.id = tv_show_genres.show_id
-WHERE tv_shows.title = 'Dexter'
-ORDER BY genres.name ASC;
+ORDER BY g.name ASC;
