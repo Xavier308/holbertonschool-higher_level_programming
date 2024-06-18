@@ -1,17 +1,13 @@
 -- My privileges!
 -- Script that lists all privileges of the MySQL users user_0d_1 and user_0d_2 on your server (in localhost).
 
--- Create the users
-CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost';
-CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost';
+-- Attempt to display privileges for user_0d_1
+SELECT 'Privileges for user_0d_1:';
+SHOW GRANTS FOR 'user_0d_1'@'localhost';
 
--- Grant some privileges
-GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
-GRANT ALL PRIVILEGES ON *.* TO 'user_0d_2'@'localhost';
+-- Separator for clarity in output
+SELECT '--------------------------------------';
 
--- Flush privileges
-FLUSH PRIVILEGES;
-
--- List all privileges of the users
--- SHOW GRANTS FOR 'user_0d_1'@'localhost';
--- SHOW GRANTS FOR 'user_0d_2'@'localhost';
+-- Attempt to display privileges for user_0d_2
+SELECT 'Privileges for user_0d_2:';
+SHOW GRANTS FOR 'user_0d_2'@'localhost';
