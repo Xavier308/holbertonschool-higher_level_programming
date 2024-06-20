@@ -6,11 +6,9 @@ and database name.
 It connects to a MySQL server running on localhost at port 3306.
 Results are sorted in ascending order by states.id and displayed.
 """
-
+import sys
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
-import sys
-
 
 Base = declarative_base()
 
@@ -31,13 +29,16 @@ def list_states(username, password, dbname):
         f'mysql+mysqldb://{username}:{password}'
         f'@localhost:3306/{dbname}'
     )
-    Base = declarative_base()
+    Base.metadata.create_all(engine)
 
     # Create a Session
     Session = sessionmaker(bind=engine)
     session = Session()
 
     # Query all states
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
     states = session.query(State).order_by(State.id).all()
     for state in states:
         print(f'({state.id}, {state.name})')
