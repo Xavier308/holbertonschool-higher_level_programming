@@ -1,34 +1,48 @@
 #!/usr/bin/python3
 """
-Module to list all states from the database hbtn_0e_0_usa.
+Module to list all states from the database hbtn_0e_0_usa using SQLAlchemy.
 This script takes 3 arguments: mysql username, mysql password,
 and database name.
 It connects to a MySQL server running on localhost at port 3306.
 Results are sorted in ascending order by states.id and displayed.
 """
 
-import MySQLdb
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 import sys
+
+Base = declarative_base()
+
+
+class State(Base):
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), nullable=False)
 
 
 def list_states(username, password, dbname):
     """
-    Connects to the database and prints all states sorted by id.
+    Connects to the database using SQLAlchemy and prints all states sorted
+    by id.
     """
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=dbname
-    )
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
-    cur.close()
-    db.close()
+
+    # create a connection string
+    conn_str = f"mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}"
+
+    # create an engine
+    engine = create_engine(conn_str)
+
+    # Create a Session
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    # Query all states
+    states = session.query(State).order_by(State.id).all()
+    for state in states:
+        print(f'({state.id}, {state.name})')
+
+    session.close()
 
 
 if __name__ == "__main__":
