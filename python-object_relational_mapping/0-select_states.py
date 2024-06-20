@@ -8,9 +8,9 @@ Results are sorted in ascending order by states.id and displayed.
 """
 
 from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 import sys
+
 
 Base = declarative_base()
 
@@ -23,15 +23,15 @@ class State(Base):
 
 def list_states(username, password, dbname):
     """
-    Connects to the database using SQLAlchemy and prints all states sorted
-    by id.
+    Connects to the database using SQLAlchemy and prints all states
+    sorted by id.
     """
-
-    # create a connection string
-    conn_str = f"mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}"
-
-    # create an engine
-    engine = create_engine(conn_str)
+    # Create engine
+    engine = create_engine(
+        f'mysql+mysqldb://{username}:{password}'
+        f'@localhost:3306/{dbname}'
+    )
+    Base = declarative_base()
 
     # Create a Session
     Session = sessionmaker(bind=engine)
