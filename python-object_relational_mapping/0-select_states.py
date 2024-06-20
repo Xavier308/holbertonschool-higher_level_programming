@@ -22,7 +22,7 @@ def list_states(username, password, dbname):
     Connects to the database and prints all states sorted by id.
     """
     # Create a connection string and engine
-    conn_str = f"mysql+mysqldb://{username}:{password}@localhost/{dbname}"
+    conn_str = f"mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}"
     engine = create_engine(conn_str)
 
     # Create a configured "Session" class and a session
