@@ -32,10 +32,6 @@ def list_states(username, password, dbname):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query all states
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
     states = session.query(State).order_by(State.id).all()
     for state in states:
         print(f'({state.id}, {state.name})')
