@@ -11,34 +11,37 @@ Base = declarative_base()
 
 
 class State(Base):
+    """Represents a state for a MySQL database."""
     __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(256), nullable=False)
 
 
 def list_states(username, password, dbname):
     """
-    Connects to the database using SQLAlchemy and prints all states
-    sorted by id.
+    Connects to the database and prints all states sorted by id.
     """
-    # Create engine
-    engine = create_engine(
-        f'mysql+mysqldb://{username}:{password}'
-        f'@localhost:3306/{dbname}'
-    )
-    Base.metadata.create_all(engine)
+    # Create a connection string and engine
+    conn_str = f"mysql+mysqldb://{username}:{password}@localhost/{dbname}"
+    engine = create_engine(conn_str)
 
-    # Create a Session
+    # Create a configured "Session" class and a session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).order_by(State.id).all()
+    # Query all states and order by id
+    states = session.query(State).order_by(State.id.asc()).all()
+
+    # Print each state
     for state in states:
-        print(f'({state.id}, {state.name})')
+        print(f"({state.id}, '{state.name}')")
 
     session.close()
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 4:
-        list_states(sys.argv[1], sys.argv[2], sys.argv[3])
+        username = sys.argv[1]
+        password = sys.argv[2]
+        dbname = sys.argv[3]
+        list_states(username, password, dbname)
