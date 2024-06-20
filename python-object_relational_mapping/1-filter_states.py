@@ -40,15 +40,13 @@ def list_states_starting_with_n(username, password, dbname):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query states with names starting with 'N' and order by id
-    query = session.query(State)
-    filtered_query = query.filter(State.name.like('N%'))
-    ordered_query = filtered_query.order_by(State.id.asc())
-    states = ordered_query.all()
+    # Query all states and order by id
+    states = session.query(State).order_by(State.id.asc()).all()
 
-    # Print each state
+    # Print each state that starts with 'N'
     for state in states:
-        print(f"({state.id}, '{state.name}')")
+        if state.name.startswith('N'):
+            print(f"({state.id}, '{state.name}')")
 
     session.close()
 
