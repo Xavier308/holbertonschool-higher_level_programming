@@ -47,7 +47,9 @@ def list_states_by_name(username, password, dbname, state_name):
     )
 
     # Execute the query using the raw SQL string
-    states = session.execute(query).fetchall()
+    # states = session.execute(query).fetchall()
+    # Execute the query using the raw SQL string
+    states = session.execute(query, {'state_name': state_name}).fetchall()
 
     # Print each state
     for state in states:
