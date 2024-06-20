@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 """
-Module to list all states from the database hbtn_0e_0_usa using SQLAlchemy.
-This script takes 3 arguments: mysql username, mysql password,
-and database name.
-It connects to a MySQL server running on localhost at port 3306.
-Results are sorted in ascending order by states.id and displayed.
+Module to list all states from the database hbtn_0e_0_usa
 """
+import MySQLdb
 import sys
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
