@@ -5,7 +5,7 @@ database hbtn_0e_0_usa using SQLAlchemy.
 """
 import MySQLdb
 import sys
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -39,13 +39,19 @@ def list_states_by_name(username, password, dbname, state_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query all states and order by id
-    states = session.query(State).order_by(State.id.asc()).all()
+    # Create the query using format to include user input
+    query = text(
+        "SELECT * FROM states "
+        "WHERE name = '{}' "
+        "ORDER BY id ASC".format(state_name)
+    )
 
-    # Print each state that matches the provided state_name
+    # Execute the query using the raw SQL string
+    states = session.execute(query).fetchall()
+
+    # Print each state
     for state in states:
-        if state.name == state_name:
-            print(f"({state.id}, '{state.name}')")
+        print(f"({state.id}, '{state.name}')")
 
     session.close()
 
