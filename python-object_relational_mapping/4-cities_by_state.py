@@ -13,6 +13,8 @@ Base = declarative_base()
 class State(Base):
     """
     Represents a state for a MySQL database.
+    Defines a relationship to the City model,
+    which represents cities within the state.
     """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -23,6 +25,8 @@ class State(Base):
 class City(Base):
     """
     Represents a city for a MySQL database.
+    Linked to a State via a foreign key to
+    represent the state-city relationship.
     """
     __tablename__ = 'cities'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -33,8 +37,8 @@ class City(Base):
 
 def list_cities(username, password, dbname):
     """
-    Connects to the database and prints all cities, sorted by city id,
-    using direct execution of SQL via SQLAlchemy's execute method.
+    Connects to the database using SQLAlchemy and prints details of all cities,
+    sorted by city ID.
 
     Args:
         username (str): The username for the MySQL database.
@@ -46,22 +50,16 @@ def list_cities(username, password, dbname):
     engine = create_engine(conn_str)
     Base.metadata.create_all(engine)
 
-    # Create a configured "Session" class and a session
+    # Create a session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Use the execute method to perform a raw SQL query safely
-    query = text(
-        "SELECT cities.id, cities.name, states.name "
-        "FROM cities "
-        "JOIN states ON cities.state_id = states.id "
-        "ORDER BY cities.id ASC"
-    )
-    result = session.execute(query).fetchall()
+    # Perform the query and fetch all results
+    cities = session.query(City).join(State).order_by(City.id).all()
 
-    # Print each city
-    for city_id, city_name, state_name in result:
-        print(f"({city_id}, '{city_name}', '{state_name}')")
+    # Print each city's ID, name, and associated state's name
+    for city in cities:
+        print(f"({city.id}, '{city.name}', '{city.state.name}')")
 
     session.close()
 
