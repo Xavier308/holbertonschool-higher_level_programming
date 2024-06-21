@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""Filter states by user input using direct SQL queries"""
-
-
+"""filter the states by the name"""
 import sys
 import MySQLdb
+
 
 if __name__ == "__main__":
 
@@ -12,7 +11,7 @@ if __name__ == "__main__":
     dbname = sys.argv[3]
     state_name = sys.argv[4]
 
-    # Connect to the MySQL server
+    # Connect mysql server
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -22,19 +21,23 @@ if __name__ == "__main__":
         charset="utf8"
     )
 
+    # Create cursor object
     cursor = db.cursor()
 
-    query = """
-SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY states.id ASC"""
+    # Query
+    query = """SELECT * FROM states WHERE name LIKE BINARY '{}' \
+        ORDER BY states.id ASC"""
     query = query.format(state_name)
-
+    # Execute the query
     cursor.execute(query)
 
- 
+    # Fetch results
     states = cursor.fetchall()
 
+    # Loop to print the resutls
     for state in states:
         print(state)
 
+    # Close cursor
     cursor.close()
     db.close()
