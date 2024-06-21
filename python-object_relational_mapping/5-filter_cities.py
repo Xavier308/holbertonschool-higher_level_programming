@@ -1,13 +1,15 @@
+#!/usr/bin/python3
+"""
+Connects to the MySQL database and prints names of all cities from
+a specified state, sorted by city ID.
+"""
 import MySQLdb
 import sys
 
 
 def list_cities_by_state(username, password, dbname, state_name):
     """
-    Connects to the MySQL database and prints names of all cities from
-    a specified state, sorted by city ID.
-
-    Args:
+        Args:
         username (str): The username for the MySQL database.
         password (str): The password for the MySQL database.
         dbname (str): The name of the MySQL database.
