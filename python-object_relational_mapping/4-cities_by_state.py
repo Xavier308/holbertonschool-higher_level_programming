@@ -49,7 +49,12 @@ def list_cities(username, password, dbname):
     session = Session()
 
     # Query to get all cities and their states, ordered by city id
-    cities = session.query(City).join(State).order_by(City.id.asc()).all()
+    cities = (
+        session.query(City)
+        .join(State)
+        .order_by(City.id.asc())
+        .all()
+    )
 
     # Print each city with its state
     for city in cities:
