@@ -1,55 +1,70 @@
-#!/usr/bin/python3
-"""
-This script lists all cities from a specified state in the database
-'hbtn_0e_4_usa' using SQLAlchemy, an ORM tool.
-"""
 import MySQLdb
-from sys import argv
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-
-Base = declarative_base()
-
-
-class State(Base):
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(256), nullable=False)
-    cities = relationship("City", backref="state")
-
-
-class City(Base):
-    __tablename__ = 'cities'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(256), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'))
+import sys
 
 
 def list_cities_by_state(username, password, dbname, state_name):
-    # Create engine
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}')
-    Base.metadata.create_all(engine)
+    """
+    Connects to the MySQL database and prints names of all cities from
+    a specified state, sorted by city ID.
 
-    # Create session
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    Args:
+        username (str): The username for the MySQL database.
+        password (str): The password for the MySQL database.
+        dbname (str): The name of the MySQL database.
+        state_name (str): The name of the state to search for cities.
+    """
+    # Define database connection parameters
+    db_host = "localhost"
+    db_user = username
+    db_password = password
+    db_name = dbname
+    db_port = 3306  # Specify the MySQL port
 
-    # Query database
-    states = session.query(State).filter(State.name == state_name).all()
-    cities_list = []
-    for state in states:
-        cities = session.query(City.name).filter(City.state_id == state.id).order_by(City.id).all()
-        for city in cities:
-            cities_list.append(city[0])
+    # Establish a connection to the MySQL database
+    db = MySQLdb.connect(
+        host=db_host,
+        user=db_user,
+        passwd=db_password,
+        db=db_name,
+        port=db_port  # Include the port in the connection
+    )
+    # Create a cursor object
+    cursor = db.cursor()
 
-    if cities_list:
-        print(", ".join(cities_list))
+    # Execute the SQL query to find the state ID
+    cursor.execute("SELECT id FROM states WHERE name = %s", (state_name,))
+    state_id = cursor.fetchone()
+
+    # If a state was found, retrieve cities
+    if state_id:
+        state_id = state_id[0]
+        # Define the SQL query and parameters
+        sql_query = "SELECT name FROM cities WHERE state_id = %s ORDER BY id"
+        params = (state_id,)
+
+        # Execute the SQL query using safe parameter substitution
+        cursor.execute(sql_query, params)
+        cities = cursor.fetchall()
+        # Print cities if any are found
+        if cities:
+            print(", ".join(city[0] for city in cities))
+        else:
+            print("No cities found for this state.")
     else:
-        print()
+        print("State not found.")
 
-    session.close()
+    # Close the cursor and the connection
+    cursor.close()
+    db.close()
 
 
 if __name__ == "__main__":
-    if len(argv) == 5:
-        list_cities_by_state(argv[1], argv[2], argv[3], argv[4])
+    if len(sys.argv) == 5:
+        # Extract command line arguments
+        username = sys.argv[1]
+        password = sys.argv[2]
+        dbname = sys.argv[3]
+        state_name = sys.argv[4]
+
+        # Call the function with the unpacked arguments
+        list_cities_by_state(username, password, dbname, state_name)
