@@ -24,5 +24,3 @@ Learn about importing modules and organizing Python code effectively in this sec
 
 ### python-more_data_structures
 Extend your knowledge of Python data structures with more complex and advanced data handling techniques. This directory will help you master data processing and manipulation using Python's powerful capabilities.
-
-
