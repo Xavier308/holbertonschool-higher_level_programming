@@ -1,7 +1,5 @@
 # RESTful API Project
 
-## Overview
-
 ## Author
 
 * **Javier Valenzani** - *Project creator*
@@ -9,6 +7,9 @@
 ## Implementation
 
 * **Xavier J. Cruz** - *Project implementation*
+
+
+## Overview
 
 ## Introduction
 This project explores the domain of RESTful APIs, a cornerstone in web services. You'll learn about the Representational State Transfer (REST) architecture, which ensures scalable, stateless, and cacheable communication systems, facilitating easy integration of web services.
