@@ -32,40 +32,40 @@ that does not have all the dependencies for that reason we need in the command l
 
 Example:
 
-´´´bash
+```bash
 /path/to/your/venv/bin/python3 ./0-select_states.py root root hbtn_0e_0_usa
-´´´
-´´´bash
+```
+```bash
 #! /path/to/your/venv/bin/python3
-´´´
+```
 
 ### Using an Enhanced Shell
 
 MyCLI: A command line tool called mycli is designed as an enhanced MySQL/MariaDB client that supports auto-completion and syntax highlighting. 
 
 - You can install it using pip:
-´´´bash
+```bash
 pip install mycli
-´´´
+```
 - Connect to your MariaDB database with:
-´´´bash
+```bash
 mycli -u root -p Your_password_for_mariadb
-´´´
+```
 
 ### Change password of your Mariadb
 
 Step 1
-´´´bash
+```bash
 mysql -u root -p
-´´´
+```
 Step 2
-´´´bash
+```bash
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'mynewpassword';
-´´´
+```
 Step 3
-´´´bash
+```bash
 FLUSH PRIVILEGES;
 
 Step 4
 EXIT;
-´´´
+```
